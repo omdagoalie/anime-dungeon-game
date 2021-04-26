@@ -25,13 +25,13 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         ...9999998999.......99999
         ....8.................99.
         .........................
-        `, mySprite, 50, 50)
+        `, mySprite, 100, 100)
 })
 let projectile: Sprite = null
 let mySprite: Sprite = null
+game.showLongText("Welcome to anime escape, In this game you will be teleported to three universes.", DialogLayout.Center)
+tiles.setTilemap(tilemap`level2`)
 mySprite = sprites.create(assets.image`Naruto`, SpriteKind.Player)
+game.splash("Hi my name is Uzumaki Naruto", " Welcome to my universe")
 controller.moveSprite(mySprite)
-tiles.setTilemap(tilemap`level1`)
-let mySprite2 = sprites.create(assets.image`Tanjiro`, SpriteKind.Player)
-let mySprite3 = sprites.create(assets.image`Pain`, SpriteKind.Projectile)
-mySprite2.setPosition(128, 84)
+scene.cameraFollowSprite(mySprite)
