@@ -1,5 +1,5 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    projectile = sprites.createProjectileFromSprite(img`
+    Rasen_Shuriken = sprites.createProjectileFromSprite(img`
         .........................
         ..............9899999899.
         9989.........989998999699
@@ -25,13 +25,13 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         ...9999998999.......99999
         ....8.................99.
         .........................
-        `, mySprite, 100, 100)
+        `, naruTo, 100, 0)
 })
-let projectile: Sprite = null
-let mySprite: Sprite = null
+let Rasen_Shuriken: Sprite = null
+let naruTo: Sprite = null
 game.showLongText("Welcome to anime escape, In this game you will be teleported to three universes.", DialogLayout.Center)
 tiles.setTilemap(tilemap`level2`)
-mySprite = sprites.create(assets.image`Naruto`, SpriteKind.Player)
+naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
 game.splash("Hi my name is Uzumaki Naruto", " Welcome to my universe")
-controller.moveSprite(mySprite)
-scene.cameraFollowSprite(mySprite)
+controller.moveSprite(naruTo, 100, 100)
+scene.cameraFollowSprite(naruTo)
