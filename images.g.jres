@@ -24,6 +24,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Muzan"
     },
+    "image1": {
+        "data": "hwQIAA4AAAAAAAAAAAAAAAAQERERAQAAABGZmZkRAAAAkYmImBkAAACZiBmImQAAkIkYmImYCQCAiIiBkYgIAAAAAAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "myImage"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
