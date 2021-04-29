@@ -1,4 +1,10 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    naruTo,
+    assets.animation`naru throw`,
+    200,
+    false
+    )
     Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`rasen shuriken`, naruTo, 100, 0)
 })
 let Rasen_Shuriken: Sprite = null
