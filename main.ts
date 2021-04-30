@@ -198,25 +198,8 @@ scene.setBackgroundImage(img`
     `)
 game.splash("Hi my name is Uzumaki Naruto", " Welcome to my universe")
 game.showLongText("I am at mount Myaboku training for sage mode, will geezer sage ", DialogLayout.Center)
-tiles.setTilemap(tilemap`level1`)
-naruTo = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+tiles.setTilemap(tilemap`level2`)
+naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
 game.splash("I am Pain, I am God: I am looking for ", "The Nine tails")
 scene.setBackgroundImage(img`
     ...........................................................888..................................................................................................
