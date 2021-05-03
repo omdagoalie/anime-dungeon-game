@@ -42,7 +42,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function LevelOneBasics () {
-    tiles.placeOnRandomTile(naruTo, sprites.dungeon.buttonTealDepressed)
     tiles.setTilemap(tilemap`level3`)
 }
 function animeNaruto () {
@@ -63,6 +62,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
+	
 })
 let Rasen_Shuriken: Sprite = null
 let naruTo: Sprite = null
@@ -191,7 +193,6 @@ scene.setBackgroundImage(img`
     `)
 game.splash("Hi my name is Uzumaki Naruto", " Welcome to my universe")
 game.showLongText("I am at mount Myaboku training for sage mode, will geezer sage ", DialogLayout.Center)
-tiles.setTilemap(tilemap`level2`)
 naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
 game.splash("I am Pain, I am God: I am looking for ", "The Nine tails")
 scene.setBackgroundImage(img`
