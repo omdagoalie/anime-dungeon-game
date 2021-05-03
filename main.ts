@@ -42,7 +42,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function LevelOneBasics () {
-	
+    tiles.placeOnRandomTile(naruTo, sprites.dungeon.buttonTealDepressed)
+    tiles.setTilemap(tilemap`level3`)
 }
 function animeNaruto () {
     animation.runImageAnimation(
