@@ -6,6 +6,73 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+function enemYs () {
+    myEnemy = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . 7 7 7 . 7 7 7 7 7 7 . . . 
+        . . 7 7 1 7 7 1 1 7 7 1 7 7 . . 
+        . . 7 7 1 1 1 1 1 1 1 1 7 7 . . 
+        . . . 1 5 5 5 1 1 5 5 5 1 . . . 
+        . . . 1 5 5 5 1 1 5 5 5 1 . . . 
+        . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+        . b . 1 1 f 1 1 1 1 f 1 1 . . . 
+        . b . 1 1 1 f f f f 1 1 1 . . . 
+        . b . 1 1 1 1 1 1 1 1 1 1 . . . 
+        . 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+        . b 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        `, SpriteKind.Enemy)
+    myEnemy.follow(naruTo, 50)
+    animation.runImageAnimation(
+    myEnemy,
+    [img`
+        . . . . . . . . . . . . . . . . 
+        . . . 7 7 7 . 7 7 7 7 7 7 . . . 
+        . . 7 7 1 7 7 1 1 7 7 1 7 7 . . 
+        . . 7 7 1 1 1 1 1 1 1 1 7 7 . . 
+        . . . 1 5 5 5 1 1 5 5 5 1 . . . 
+        . . . 1 5 5 5 1 1 5 5 5 1 . . . 
+        . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+        . b . 1 1 f 1 1 1 1 f 1 1 . . . 
+        . b . 1 1 1 f f f f 1 1 1 . . . 
+        . b . 1 1 1 1 1 1 1 1 1 1 . . . 
+        . 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+        . b 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . 7 7 7 . 7 7 7 7 7 7 . . . 
+        . . 7 7 1 7 7 1 1 7 7 1 7 7 . . 
+        . . 7 7 1 1 1 1 1 1 1 1 7 7 . . 
+        . . . 1 5 5 5 1 1 5 5 5 1 . . . 
+        . . . 1 5 5 5 1 1 5 5 5 1 . . . 
+        . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+        . b . 1 1 f 1 1 1 1 f 1 1 . . . 
+        . b . 1 1 1 f f f f 1 1 1 . . . 
+        . b . 1 1 1 1 1 1 1 1 1 1 . . . 
+        . 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+        . b 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        `],
+    500,
+    false
+    )
+    if (myEnemy.overlapsWith(naruTo)) {
+        info.changeLifeBy(-1)
+    }
+    if (true) {
+    	
+    }
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
     Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, 100, 0)
@@ -68,8 +135,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (s
 })
 function startLevel () {
     tiles.setTilemap(tilemap`level15`)
+    enemYs()
 }
 let Rasen_Shuriken: Sprite = null
+let myEnemy: Sprite = null
 let naruTo: Sprite = null
 naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
 scene.cameraFollowSprite(naruTo)
