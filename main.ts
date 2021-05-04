@@ -520,3 +520,8 @@ scene.setBackgroundImage(img`
     `)
 game.splash("Are you Looking for Me!")
 tiles.setTilemap(tilemap`level3`)
+game.onUpdateInterval(500, function () {
+    if (true) {
+    	
+    }
+})
