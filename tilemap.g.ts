@@ -8,6 +8,8 @@ namespace myTiles {
     export const tile3 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile1 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -277,6 +279,25 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `, [myTiles.transparency16], TileScale.Sixteen);
+            case "level15":
+            case "level15":return tiles.createTilemap(hex`1000100004010101010101010101010101010102070b0b0b0b0b0b0b0b0b0b0b0b0b0b08070b0b0b0b0b0b0b0b0b0b0b0b0b0b08090b0b0b0b0b0b0b0b0b0b0b0b0b0b08070b0b0b0b0b0b0b0b0b0b0b0b0b0b08070b0b0b0b0b0b0b0b0b0b0b0b0b0b08070b0b0b0b0b0b0b0b0b0b0b0b0b0b0b090b0b0b0b0b0b0b0b0b0b0b0b0b0b0c070b0b0b0b0b0b0b0b0b0b0b0b0b0b0c070b0b0b0b0b0b0b0b0b0b0b0b0b0b0b070b0b0b0b0b0b0b0b0b0b0b0b0b0b08090b0b0b0b0b0b0b0b0b0b0b0b0b0b08070b0b0b0b0b0b0b0b0b0b0b0b0b0b08070b0b0b0b0b0b0b0b0b0b0b0b0b0b08090b0b0b0b0b0b0b0b0b0b0b0b0b0b0803060606060606060606060606060605`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16,sprites.dungeon.purpleOuterNorth1,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.purpleOuterWest1,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterEast2,myTiles.tile1,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleInsignia], TileScale.Sixteen);
         }
         return null;
     })
@@ -290,6 +311,8 @@ namespace myTiles {
             case "tile3":return tile3;
             case "myTile2":
             case "tile4":return tile4;
+            case "myTile":
+            case "tile1":return tile1;
         }
         return null;
     })
