@@ -66,12 +66,6 @@ function enemYs () {
     500,
     false
     )
-    if (myEnemy.overlapsWith(naruTo)) {
-        info.changeLifeBy(-1)
-    }
-    if (true) {
-    	
-    }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
@@ -116,6 +110,10 @@ function animeNaruto () {
     false
     )
 }
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    music.powerDown.play()
+})
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
