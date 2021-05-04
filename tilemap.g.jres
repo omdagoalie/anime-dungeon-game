@@ -169,7 +169,7 @@
     "level15": {
         "id": "level15",
         "mimeType": "application/mkcd-tilemap",
-        "data": "MTAxMDAwMTAwMDA0MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAyMDcwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMDgwNzBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwODA5MGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjA4MDcwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMDgwNzBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwODA3MGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMDkwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGMwNzBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYzA3MGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMDcwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMDgwOTBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwODA3MGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjA4MDcwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMDgwOTBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwYjBiMGIwODAzMDYwNjA2MDYwNjA2MDYwNjA2MDYwNjA2MDYwNjA1MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
+        "data": "MTAxMDAwMTAwMDA0MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAyMDcwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMDgwNzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwODA5MGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzA4MDcwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMDgwNzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwODA3MGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMDkwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGEwNzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYTA3MGMwYzBjMGYwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMDcwYzBjMGMwZjBjMGMwYzBjMGMwYzBjMGMwYzBjMDgwOTBjMGMwYzBkMGUwZTBlMGUwZTBlMGUwZTBlMGUwODA3MGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYjBiMDcwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBiMGIwOTBjMGMwYzBjMGMwYzBjMGMwYzBjMGMwYzBjMGIwYjAzMDYwNjA2MDYwNjA2MDYwNjA2MDYwNjA2MDYwNjA1MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAyMDAwMDAwMDAwMDAwMDAwMjAwMDAwMDAwMDAwMDAwMjIyMjIyMjIyMjAyMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
         "tileset": [
             "myTiles.transparency16",
             "sprites.dungeon.purpleOuterNorth1",
@@ -181,9 +181,12 @@
             "sprites.dungeon.purpleOuterWest1",
             "sprites.dungeon.purpleOuterEast0",
             "sprites.dungeon.purpleOuterEast2",
-            "myTiles.tile1",
-            "sprites.dungeon.darkGroundCenter",
-            "sprites.dungeon.collectibleInsignia"
+            "sprites.dungeon.collectibleInsignia",
+            "sprites.dungeon.stairEast",
+            "sprites.dungeon.floorMixed",
+            "sprites.dungeon.greenOuterSouthEast",
+            "sprites.dungeon.greenOuterSouth0",
+            "sprites.dungeon.greenOuterWest1"
         ],
         "displayName": "level15"
     },
