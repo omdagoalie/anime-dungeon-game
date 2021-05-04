@@ -73,7 +73,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Rasen_Shuriken,
     assets.animation`rasen move`,
-    500,
+    100,
     false
     )
 })
@@ -520,8 +520,3 @@ scene.setBackgroundImage(img`
     `)
 game.splash("Are you Looking for Me!")
 tiles.setTilemap(tilemap`level3`)
-game.onUpdateInterval(500, function () {
-    if (true) {
-    	
-    }
-})
