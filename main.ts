@@ -135,6 +135,11 @@ function startLevel () {
     tiles.setTilemap(tilemap`level15`)
     enemYs()
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    music.baDing.play()
+    myEnemy.destroy(effects.confetti, 500)
+    info.changeScoreBy(1)
+})
 let Rasen_Shuriken: Sprite = null
 let myEnemy: Sprite = null
 let naruTo: Sprite = null
