@@ -133,13 +133,13 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
-    enemy1.follow(naruTo, randint(0, 10))
-    enemy2.follow(naruTo, 50)
-    Enemy3.follow(naruTo, 50)
-    enemy4.follow(naruTo, 50)
-    enemy6.follow(naruTo, 50)
-    enemy7.follow(naruTo, 50)
-    myEnemy.follow(naruTo, 50)
+    enemy1.follow(naruTo, randint(5, 50))
+    enemy2.follow(naruTo, randint(5, 50))
+    Enemy3.follow(naruTo, randint(5, 50))
+    enemy4.follow(naruTo, randint(5, 50))
+    enemy6.follow(naruTo, randint(5, 50))
+    enemy7.follow(naruTo, randint(5, 50))
+    myEnemy.follow(naruTo, randint(5, 50))
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
@@ -211,8 +211,34 @@ function startLevel () {
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
-    myEnemy.destroy(effects.confetti, 500)
-    info.changeScoreBy(1)
+    if (Rasen_Shuriken.overlapsWith(myEnemy)) {
+        myEnemy.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
+    if (Rasen_Shuriken.overlapsWith(enemy1)) {
+        enemy1.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
+    if (Rasen_Shuriken.overlapsWith(enemy6)) {
+        enemy6.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
+    if (Rasen_Shuriken.overlapsWith(enemy2)) {
+        enemy2.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
+    if (Rasen_Shuriken.overlapsWith(Enemy3)) {
+        Enemy3.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
+    if (Rasen_Shuriken.overlapsWith(enemy4)) {
+        enemy4.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
+    if (Rasen_Shuriken.overlapsWith(enemy7)) {
+        enemy7.destroy(effects.confetti, 500)
+        info.changeScoreBy(1)
+    }
 })
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
