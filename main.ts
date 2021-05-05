@@ -25,6 +25,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
+    enemy1.follow(naruTo, randint(5, 50))
     enemy2 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -43,6 +44,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
+    enemy2.follow(naruTo, randint(25, 50))
     Enemy3 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -61,6 +63,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
+    Enemy3.follow(naruTo, randint(25, 50))
     enemy4 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -79,6 +82,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
+    enemy4.follow(naruTo, randint(25, 50))
     myEnemy = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -97,6 +101,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
+    myEnemy.follow(naruTo, randint(25, 50))
     enemy6 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -115,6 +120,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
+    enemy6.follow(naruTo, randint(25, 50))
     enemy7 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -133,13 +139,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
-    enemy1.follow(naruTo, randint(5, 50))
-    enemy2.follow(naruTo, randint(5, 50))
-    Enemy3.follow(naruTo, randint(5, 50))
-    enemy4.follow(naruTo, randint(5, 50))
-    enemy6.follow(naruTo, randint(5, 50))
-    enemy7.follow(naruTo, randint(5, 50))
-    myEnemy.follow(naruTo, randint(5, 50))
+    enemy7.follow(naruTo, randint(25, 50))
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
@@ -148,7 +148,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Rasen_Shuriken,
     assets.animation`rasen move`,
     100,
-    false
+    true
     )
 })
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
@@ -168,6 +168,9 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
+function startFight () {
+    tiles.setTilemap(tilemap`level16`)
+}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
@@ -238,6 +241,12 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     if (Rasen_Shuriken.overlapsWith(enemy7)) {
         enemy7.destroy(effects.confetti, 500)
         info.changeScoreBy(1)
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
+    effects.confetti.startScreenEffect(500)
+    if (true) {
+        startFight()
     }
 })
 let Rasen_Shuriken: Sprite = null
