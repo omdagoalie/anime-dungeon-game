@@ -150,7 +150,18 @@ function enemYs () {
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
-    Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, 100, 0)
+    if (controller.down.isPressed()) {
+        Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, 0, 100)
+    }
+    if (controller.up.isPressed()) {
+        Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, 0, -100)
+    }
+    if (controller.left.isPressed()) {
+        Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, -100, 0)
+    }
+    if (controller.right.isPressed()) {
+        Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, 100, 0)
+    }
     animation.runImageAnimation(
     Rasen_Shuriken,
     assets.animation`rasen move`,
