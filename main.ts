@@ -261,8 +261,8 @@ let enemy2: Sprite = null
 let enemy1: Sprite = null
 let naruTo: Sprite = null
 naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
-music.playMelody("C5 B A G F E D C ", 120)
 scene.cameraFollowSprite(naruTo)
+music.playMelody("C5 B A G F E D C ", 120)
 info.setScore(0)
 info.setLife(3)
 controller.moveSprite(naruTo)
