@@ -140,6 +140,13 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
     enemy7.follow(naruTo, randint(25, 50))
+    enemy1.setPosition(randint(10, 150), randint(10, 150))
+    enemy2.setPosition(randint(10, 150), randint(10, 150))
+    Enemy3.setPosition(randint(10, 150), randint(10, 150))
+    enemy4.setPosition(randint(10, 150), randint(10, 150))
+    enemy6.setPosition(randint(10, 150), randint(10, 150))
+    enemy7.setPosition(randint(10, 150), randint(10, 150))
+    myEnemy.setPosition(randint(10, 150), randint(10, 150))
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
@@ -188,10 +195,6 @@ function animeNaruto () {
     false
     )
 }
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-    music.powerDown.play()
-})
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
@@ -250,6 +253,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (spr
         startFight()
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    music.powerDown.play()
+})
 let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
@@ -260,13 +267,13 @@ let Enemy3: Sprite = null
 let enemy2: Sprite = null
 let enemy1: Sprite = null
 let naruTo: Sprite = null
+game.showLongText("Welcome to anime escape, In this game you will be teleported to three universes.", DialogLayout.Center)
 naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
 scene.cameraFollowSprite(naruTo)
 music.playMelody("C5 B A G F E D C ", 120)
 info.setScore(0)
-info.setLife(3)
+info.setLife(1)
 controller.moveSprite(naruTo)
-game.showLongText("Welcome to anime escape, In this game you will be teleported to three universes.", DialogLayout.Center)
 scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
