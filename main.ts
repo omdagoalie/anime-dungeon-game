@@ -25,7 +25,7 @@ function enemYs () {
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         `, SpriteKind.Enemy)
-    enemy1.follow(naruTo, randint(5, 50))
+    enemy1.follow(naruTo, randint(25, 50))
     enemy2 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
