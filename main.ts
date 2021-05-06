@@ -170,6 +170,7 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
 })
 function startFight () {
     tiles.setTilemap(tilemap`level16`)
+    painBoss = sprites.create(assets.image`Pain`, SpriteKind.Enemy)
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -243,12 +244,13 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
         info.changeScoreBy(1)
     }
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
     if (true) {
         startFight()
     }
 })
+let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
 let enemy6: Sprite = null
@@ -259,6 +261,7 @@ let enemy2: Sprite = null
 let enemy1: Sprite = null
 let naruTo: Sprite = null
 naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
+music.playMelody("C5 B A G F E D C ", 120)
 scene.cameraFollowSprite(naruTo)
 info.setScore(0)
 info.setLife(3)
