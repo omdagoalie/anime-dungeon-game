@@ -193,8 +193,8 @@ function startFight () {
     tiles.setTilemap(tilemap`level16`)
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
     statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-    statusbar.value = 10
-    statusbar.attachToSprite(painBoss)
+    statusbar.max = 10
+    statusbar.attachToSprite(painBoss, 0, 0)
 }
 statusbars.onZero(StatusBarKind.Health, function (status) {
     painBoss.destroy(effects.clouds, 500)
@@ -228,7 +228,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
-        statusbar.value += -1
+        statusbar.max += -1
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
