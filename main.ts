@@ -228,7 +228,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
-        statusbar.max += -1
+        statusbar.value += -1
     }
     Rasen_Shuriken.destroy()
 })
