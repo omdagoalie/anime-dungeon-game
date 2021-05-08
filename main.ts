@@ -189,16 +189,16 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
+statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
+    painBoss.destroy(effects.clouds, 500)
+})
 function startFight () {
     tiles.setTilemap(tilemap`level16`)
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
-    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-    statusbar.max = 10
+    statusbar = statusbars.create(50, 4, StatusBarKind.EnemyHealth)
+    statusbar.value = 50
     statusbar.attachToSprite(painBoss, 0, 0)
 }
-statusbars.onZero(StatusBarKind.Health, function (status) {
-    painBoss.destroy(effects.clouds, 500)
-})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
