@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const boss = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
@@ -188,8 +191,14 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
 })
 function startFight () {
     tiles.setTilemap(tilemap`level16`)
-    painBoss = sprites.create(assets.image`Pain`, SpriteKind.Enemy)
+    painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
+    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+    statusbar.value = 10
+    statusbar.attachToSprite(painBoss)
 }
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    painBoss.destroy(effects.clouds, 500)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
@@ -257,6 +266,9 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
         enemy7.destroy(effects.confetti, 500)
         info.changeScoreBy(1)
     }
+    if (Rasen_Shuriken.overlapsWith(painBoss)) {
+        statusbar.value += -1
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
@@ -268,6 +280,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
     music.powerDown.play()
 })
+let statusbar: StatusBarSprite = null
 let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
@@ -281,6 +294,7 @@ let naruTo: Sprite = null
 game.showLongText("Welcome to anime escape, In this game you will be teleported to three universes.", DialogLayout.Center)
 naruTo = sprites.create(assets.image`Naruto`, SpriteKind.Player)
 scene.cameraFollowSprite(naruTo)
+game.showLongText("Please wait game is loading: Also When you attack please choose the direction your going and then press A", DialogLayout.Center)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
