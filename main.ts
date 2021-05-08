@@ -195,8 +195,8 @@ statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
 function startFight () {
     tiles.setTilemap(tilemap`level16`)
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
-    statusbar = statusbars.create(50, 4, StatusBarKind.EnemyHealth)
-    statusbar.value = 50
+    statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
+    statusbar.value = 10
     statusbar.attachToSprite(painBoss, 0, 0)
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -230,6 +230,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
         statusbar.max += -1
     }
+    Rasen_Shuriken.destroy()
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
