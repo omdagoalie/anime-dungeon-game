@@ -226,6 +226,11 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
+    if (Rasen_Shuriken.overlapsWith(painBoss)) {
+        statusbar.value += -1
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
     if (true) {
@@ -265,9 +270,6 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     if (Rasen_Shuriken.overlapsWith(enemy7)) {
         enemy7.destroy(effects.confetti, 500)
         info.changeScoreBy(1)
-    }
-    if (Rasen_Shuriken.overlapsWith(painBoss)) {
-        statusbar.value += -1
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
