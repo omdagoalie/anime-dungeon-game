@@ -241,7 +241,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (s
 })
 function startLevel () {
     tiles.setTilemap(tilemap`level15`)
-    music.spooky.playUntilDone()
+    music.spooky.loop()
     enemYs()
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -422,7 +422,7 @@ scene.setBackgroundImage(img`
     ddddddd55555555555555555555ddddd55555555555555555555555555555555555555ddddddddddddddddddddddddddddde3355dddddddddddddd5d55b3bdddd444bbdddb4ddd4dd3ee3ddddddddddd
     ddddddddd55555555555555555555ddddddddddddddddddddd555555ddddddddddddddddddddddddddddddddddddddddddde33d55d5555dd555d555333b3bddddddd4e33dbbdd4444eeddddddddddddd
     `)
-music.playMelody("C5 B A G F E D C ", 120)
+music.playMelody("B A G A G F A C5 ", 120)
 info.setScore(0)
 info.setLife(1)
 controller.moveSprite(naruTo)
