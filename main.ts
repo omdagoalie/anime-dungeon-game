@@ -241,6 +241,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (s
 })
 function startLevel () {
     tiles.setTilemap(tilemap`level15`)
+    music.spooky.playUntilDone()
     enemYs()
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
