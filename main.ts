@@ -190,10 +190,17 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
 sprites.onOverlap(SpriteKind.boss, SpriteKind.Player, function (sprite, otherSprite) {
     if (painBoss.overlapsWith(naruTo)) {
         info.changeLifeBy(-1)
+        deathEnding1()
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, otherSprite) {
+    if (Rasen_Shuriken.overlapsWith(extraPoints)) {
+        extraPoints.destroy()
+        info.changeScoreBy(20)
+    }
 })
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     painBoss.destroy(effects.clouds, 500)
@@ -219,13 +226,9 @@ function startFight () {
         . . . . . . . 5 5 . . . . . . . 
         . . . . . . 8 8 8 8 . . . . . . 
         . . . . . 8 8 8 8 8 8 . . . . . 
-        `, SpriteKind.Enemy)
-    if (Rasen_Shuriken.overlapsWith(extraPoints)) {
-        extraPoints.destroy()
-        info.changeScoreBy(20)
-    }
-    painBoss.follow(naruTo, 50)
-    statusbar.max = 10
+        `, SpriteKind.dummy)
+    painBoss.follow(naruTo, 30)
+    statusbar.value = 10
     statusbar.attachToSprite(painBoss, 0, 0)
 }
 function deathEnding1 () {
@@ -381,7 +384,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
-        statusbar.max += -1
+        statusbar.value += -1
         info.changeScoreBy(3)
     }
     Rasen_Shuriken.destroy()
@@ -428,7 +431,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
         info.changeScoreBy(1)
     }
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
     if (true) {
         startFight()
@@ -436,10 +439,11 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairSouth, function (spr
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
+    deathEnding1()
     music.powerDown.play()
 })
-let extraPoints: Sprite = null
 let statusbar: StatusBarSprite = null
+let extraPoints: Sprite = null
 let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
