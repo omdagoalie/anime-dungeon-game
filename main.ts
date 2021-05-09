@@ -197,7 +197,7 @@ function startFight () {
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
     statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
     painBoss.follow(naruTo)
-    statusbar.value = 10
+    statusbar.max = 10
     statusbar.attachToSprite(painBoss, 0, 0)
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -229,7 +229,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
-        statusbar.value += -1
+        statusbar.max += -1
     }
     Rasen_Shuriken.destroy()
 })
