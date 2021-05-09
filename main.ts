@@ -197,8 +197,30 @@ function startFight () {
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
     statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
     painBoss.follow(naruTo, 25)
+    extraPoints = sprites.create(img`
+        . . . . . 7 7 7 7 7 7 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 7 1 1 7 1 . . . . . 
+        . . . . . 1 1 f f 1 1 . . . . . 
+        . . . . . a a 2 2 a a . . . . . 
+        . . . a a a 2 2 2 2 a a a . . . 
+        . . a a . . 2 2 2 2 . . a a . . 
+        . . . . . . 2 2 2 2 . . . . . . 
+        . . . . . . 2 2 2 2 . . . . . . 
+        . . . . . . 2 2 2 2 . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 5 5 . . . . . . . 
+        . . . . . . . 5 5 . . . . . . . 
+        . . . . . . . 5 5 . . . . . . . 
+        . . . . . . 8 8 8 8 . . . . . . 
+        . . . . . 8 8 8 8 8 8 . . . . . 
+        `, SpriteKind.Player)
+    extraPoints.setPosition(2, 3)
     statusbar.max = 10
     statusbar.attachToSprite(painBoss, 0, 0)
+    if (true) {
+    	
+    }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -230,6 +252,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
         statusbar.max += -1
+        info.changeScoreBy(3)
     }
     Rasen_Shuriken.destroy()
 })
@@ -285,6 +308,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     info.changeLifeBy(-1)
     music.powerDown.play()
 })
+let extraPoints: Sprite = null
 let statusbar: StatusBarSprite = null
 let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
@@ -423,6 +447,7 @@ scene.setBackgroundImage(img`
     ddddddddd55555555555555555555ddddddddddddddddddddd555555ddddddddddddddddddddddddddddddddddddddddddde33d55d5555dd555d555333b3bddddddd4e33dbbdd4444eeddddddddddddd
     `)
 music.playMelody("B A G A G F A C5 ", 120)
+game.showLongText("In Each level there is a secret object you have to hit, Hit that object with your attack and get bonus points", DialogLayout.Center)
 info.setScore(0)
 info.setLife(1)
 controller.moveSprite(naruTo)
