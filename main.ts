@@ -196,7 +196,6 @@ function startFight () {
     tiles.setTilemap(tilemap`level16`)
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
     statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
-    painBoss.follow(naruTo, 25)
     extraPoints = sprites.create(img`
         . . . . . 7 7 7 7 7 7 . . . . . 
         . . . . . 1 1 1 1 1 1 . . . . . 
@@ -215,12 +214,16 @@ function startFight () {
         . . . . . . 8 8 8 8 . . . . . . 
         . . . . . 8 8 8 8 8 8 . . . . . 
         `, SpriteKind.Player)
-    extraPoints.setPosition(2, 3)
+    if (painBoss.overlapsWith(naruTo)) {
+        info.changeLifeBy(-1)
+    }
+    if (Rasen_Shuriken.overlapsWith(extraPoints)) {
+        info.changeScoreBy(20)
+        extraPoints.destroy()
+    }
+    painBoss.follow(naruTo, 50)
     statusbar.max = 10
     statusbar.attachToSprite(painBoss, 0, 0)
-    if (true) {
-    	
-    }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
