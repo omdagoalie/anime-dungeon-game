@@ -3,22 +3,6 @@ namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
-            case "image2":
-            case "Tanji Attack":return img`
-. . . . 9 8 . 
-. 1 1 9 9 8 . 
-1 1 9 9 8 8 . 
-1 9 9 8 8 8 . 
-1 9 8 8 1 8 . 
-1 9 8 9 8 1 . 
-1 9 8 1 9 8 . 
-1 9 8 8 9 1 . 
-1 9 9 8 8 9 . 
-1 1 9 9 8 8 . 
-. 1 1 9 9 8 . 
-. . . . 9 8 . 
-. . . . . . . 
-`;
             case "Naruto":return img`
 ..............555.555...................
 ..............555555555.................
@@ -216,6 +200,22 @@ namespace myImages {
 .ff...2111....2222....fff.
 ..f..21f11....1ff1.....f..
 .....21112....1f1f........
+`;
+            case "image2":
+            case "Tanji Attack":return img`
+. . . . 4 2 . 
+. 1 1 4 4 2 . 
+1 1 4 4 2 2 . 
+1 4 4 2 2 2 . 
+1 4 2 2 1 2 . 
+1 4 2 4 2 1 . 
+1 4 2 1 4 2 . 
+1 4 2 2 4 1 . 
+1 4 4 2 2 4 . 
+1 1 4 4 2 2 . 
+. 1 1 4 4 2 . 
+. . . . 4 2 . 
+. . . . . . . 
 `;
         }
         return null;
