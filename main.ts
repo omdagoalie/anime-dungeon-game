@@ -196,7 +196,7 @@ function startFight () {
     tiles.setTilemap(tilemap`level16`)
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
     statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
-    painBoss.follow(naruTo)
+    painBoss.follow(naruTo, 25)
     statusbar.max = 10
     statusbar.attachToSprite(painBoss, 0, 0)
 }
