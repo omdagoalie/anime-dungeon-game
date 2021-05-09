@@ -227,9 +227,12 @@ function startFight () {
         . . . . . . 8 8 8 8 . . . . . . 
         . . . . . 8 8 8 8 8 8 . . . . . 
         `, SpriteKind.dummy)
-    painBoss.follow(naruTo, 30)
+    painBoss.follow(naruTo, 40)
     statusbar.value = 10
     statusbar.attachToSprite(painBoss, 0, 0)
+    if (true) {
+    	
+    }
 }
 function deathEnding1 () {
     scene.setBackgroundImage(img`
