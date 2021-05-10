@@ -156,9 +156,14 @@ function enemYs () {
     enemy7.setPosition(randint(10, 150), randint(10, 150))
     myEnemy.setPosition(randint(10, 150), randint(10, 150))
 }
-function THANKyOUfINAL_LEVEL3 () {
+function thanksEnding () {
+    game.showLongText("Good job you made it to the final level your amazing Give us an A Mr. Hutter", DialogLayout.Full)
     tiles.setTilemap(tilemap`level34`)
+    game.showLongText("When you wanna end the game go to the bottom right of this level.", DialogLayout.Bottom)
 }
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLadder, function (sprite, location) {
+    level23()
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
     if (controller.down.isPressed()) {
@@ -209,6 +214,7 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
 function level21 () {
+    game.showLongText("An invisible maze follow the globes to beat it", DialogLayout.Bottom)
     tiles.setTilemap(tilemap`level31`)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, otherSprite) {
@@ -245,7 +251,7 @@ function startFight () {
         . . . . . 8 8 8 8 8 8 . . . . . 
         `, SpriteKind.dummy)
     painBoss.follow(naruTo, 40)
-    statusbar.value = 1
+    statusbar.value = 5
     statusbar.attachToSprite(painBoss, 0, 0)
 }
 function level23 () {
@@ -254,7 +260,7 @@ function level23 () {
     madaraBoss = sprites.create(assets.image`madara`, SpriteKind.bossss)
     madHealth = statusbars.create(20, 4, StatusBarKind.MadaraHealt)
     madaraBoss.follow(naruTo, 40)
-    madHealth.value = 1
+    madHealth.value = 5
     madHealth.attachToSprite(madaraBoss, 0, 0)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.bossss, function (sprite, otherSprite) {
@@ -396,6 +402,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    game.reset()
+})
 function animeNaruto () {
     animation.runImageAnimation(
     naruTo,
@@ -408,8 +417,8 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
 statusbars.onZero(StatusBarKind.MadaraHealt, function (status) {
-    madaraBoss.destroy(effects.clouds, 500)
-    THANKyOUfINAL_LEVEL3()
+    madaraBoss.destroy(effects.fire, 500)
+    thanksEnding()
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -422,12 +431,10 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     level21()
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
-    level23()
-})
 function narutoLvl2 () {
     tiles.setTilemap(tilemap`level30`)
     game.showLongText("Good Job now its time for the second fight", DialogLayout.Bottom)
+    game.showLongText("You are fighting in the great ninja war against madara uchiha beat him to win", DialogLayout.Full)
     game.showLongText("Go into the purple portal for the second level", DialogLayout.Bottom)
     music.playMelody("C5 E G C5 D B C E ", 120)
 }
@@ -440,9 +447,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
-    if (true) {
-        startLevel()
-    }
+    startLevel()
 })
 sprites.onOverlap(SpriteKind.bossss, SpriteKind.Player, function (sprite, otherSprite) {
     if (madaraBoss.overlapsWith(naruTo)) {
@@ -491,9 +496,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
-    if (true) {
-        startFight()
-    }
+    startFight()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
