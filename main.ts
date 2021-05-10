@@ -14,9 +14,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
-    level21()
-})
 function enemYs () {
     enemy1 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -214,7 +211,6 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
 })
 function level21 () {
     tiles.setTilemap(tilemap`level31`)
-    music.playMelody("G B A G C5 B A B ", 120)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(extraPoints)) {
@@ -256,12 +252,19 @@ function startFight () {
 function level23 () {
     tiles.setTilemap(tilemap`level33`)
     music.playMelody("E D G F B A C5 B ", 120)
-    madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Food)
+    madaraBoss = sprites.create(assets.image`madara`, SpriteKind.bossss)
     madHealth = statusbars.create(20, 4, StatusBarKind.MadaraHealt)
     madaraBoss.follow(naruTo, 40)
     madHealth.value = 1
     madHealth.attachToSprite(madaraBoss, 0, 0)
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.bossss, function (sprite, otherSprite) {
+    if (Rasen_Shuriken.overlapsWith(madaraBoss)) {
+        madHealth.value += -1
+        info.changeScoreBy(20)
+    }
+    Rasen_Shuriken.destroy()
+})
 function deathEnding1 () {
     scene.setBackgroundImage(img`
         2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
@@ -417,6 +420,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
+    level21()
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
     level23()
 })
@@ -431,16 +437,18 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
         statusbar.value += -1
         info.changeScoreBy(3)
     }
-    if (Rasen_Shuriken.overlapsWith(madaraBoss)) {
-        madHealth.value += -1
-        info.changeScoreBy(20)
-    }
     Rasen_Shuriken.destroy()
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
     if (true) {
         startLevel()
+    }
+})
+sprites.onOverlap(SpriteKind.bossss, SpriteKind.Player, function (sprite, otherSprite) {
+    if (madaraBoss.overlapsWith(naruTo)) {
+        info.changeLifeBy(-1)
+        deathEnding1()
     }
 })
 function startLevel () {
