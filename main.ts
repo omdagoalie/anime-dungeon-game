@@ -4,6 +4,7 @@ namespace SpriteKind {
 }
 function demonMaze () {
     tiles.setTilemap(tilemap`level19`)
+    music.playMelody("C5 A E C5 C G D B ", 120)
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -409,13 +410,15 @@ function startLevel () {
     enemYs()
 }
 function nowDemons () {
-    naruTo.destroy()
-    mySprite = sprites.create(assets.image`Tanjiro`, SpriteKind.Player)
+    game.reset()
+    tanjiro = sprites.create(assets.image`Tanjiro`, SpriteKind.Player)
+    projectile = sprites.createProjectileFromSprite(assets.image`Tanji Attack`, tanjiro, 50, 50)
+    controller.moveSprite(tanjiro)
     tiles.setTilemap(tilemap`level18`)
     music.playMelody("C5 A E C5 C G D B ", 120)
-    game.showLongText("Good job You just beat pain and he didn't extract the nine tails inside Naruto, But now you have been transferred into the second universe, the demon slayer universe", DialogLayout.Center)
     game.showLongText("Tanjiro is out on a quest to fight demons and to turn his sister from a demon back into a human", DialogLayout.Bottom)
     game.showLongText("Take a break you deserve it, when you are ready go to the portal on the bottom right side of the screen", DialogLayout.Center)
+    game.showLongText("Good job You just beat pain and he didn't extract the nine tails inside Naruto, But now you have been transferred into the second universe, the demon slayer universe", DialogLayout.Center)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
@@ -459,7 +462,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     deathEnding1()
     music.powerDown.play()
 })
-let mySprite: Sprite = null
+let projectile: Sprite = null
+let tanjiro: Sprite = null
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
 let painBoss: Sprite = null
