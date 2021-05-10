@@ -157,7 +157,6 @@ function enemYs () {
     myEnemy.setPosition(randint(10, 150), randint(10, 150))
 }
 function THANKyOUfINAL_LEVEL3 () {
-    game.showLongText("Good job you made it to the final level your amazing Give us an A Mr. Hutter", DialogLayout.Bottom)
     tiles.setTilemap(tilemap`level34`)
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
