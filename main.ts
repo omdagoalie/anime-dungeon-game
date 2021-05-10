@@ -181,37 +181,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-controller.down.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, naruTo)
-})
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    naruTo,
-    assets.animation`Naru left`,
-    200,
-    true
-    )
-})
-controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, naruTo)
-})
-sprites.onOverlap(SpriteKind.boss, SpriteKind.Player, function (sprite, otherSprite) {
-    if (painBoss.overlapsWith(naruTo)) {
-        info.changeLifeBy(-1)
-        deathEnding1()
-    }
-})
-controller.left.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, naruTo)
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, otherSprite) {
-    if (Rasen_Shuriken.overlapsWith(extraPoints)) {
-        extraPoints.destroy()
-        info.changeScoreBy(20)
-    }
-})
-function animeTanji () {
-    if (true) {
+function animeatackingTanji () {
+    if (controller.A.isPressed()) {
         animation.runImageAnimation(
         tanjiro,
         [img`
@@ -249,6 +220,35 @@ function animeTanji () {
         }
     }
 }
+controller.down.onEvent(ControllerButtonEvent.Released, function () {
+    animation.stopAnimation(animation.AnimationTypes.All, naruTo)
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    naruTo,
+    assets.animation`Naru left`,
+    200,
+    true
+    )
+})
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    animation.stopAnimation(animation.AnimationTypes.All, naruTo)
+})
+sprites.onOverlap(SpriteKind.boss, SpriteKind.Player, function (sprite, otherSprite) {
+    if (painBoss.overlapsWith(naruTo)) {
+        info.changeLifeBy(-1)
+        deathEnding1()
+    }
+})
+controller.left.onEvent(ControllerButtonEvent.Released, function () {
+    animation.stopAnimation(animation.AnimationTypes.All, naruTo)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, otherSprite) {
+    if (Rasen_Shuriken.overlapsWith(extraPoints)) {
+        extraPoints.destroy()
+        info.changeScoreBy(20)
+    }
+})
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     painBoss.destroy(effects.clouds, 500)
     nowDemons()
@@ -411,6 +411,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+function movinTanji () {
+	
+}
 function animeNaruto () {
     animation.runImageAnimation(
     naruTo,
@@ -504,10 +507,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     music.powerDown.play()
 })
 let statusbar: StatusBarSprite = null
-let breathOFFLAMEGOD: Sprite = null
-let tanjiro: Sprite = null
 let extraPoints: Sprite = null
 let painBoss: Sprite = null
+let breathOFFLAMEGOD: Sprite = null
+let tanjiro: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
 let enemy6: Sprite = null
