@@ -210,6 +210,9 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, oth
         info.changeScoreBy(20)
     }
 })
+function animeTanji () {
+	
+}
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     painBoss.destroy(effects.clouds, 500)
     nowDemons()
@@ -410,10 +413,12 @@ function startLevel () {
     enemYs()
 }
 function nowDemons () {
-    game.reset()
     tanjiro = sprites.create(assets.image`Tanjiro`, SpriteKind.Player)
-    projectile = sprites.createProjectileFromSprite(assets.image`Tanji Attack`, tanjiro, 50, 50)
+    breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack`, tanjiro, 50, 50)
+    scene.cameraFollowSprite(tanjiro)
     controller.moveSprite(tanjiro)
+    Rasen_Shuriken.destroy()
+    naruTo.destroy()
     tiles.setTilemap(tilemap`level18`)
     music.playMelody("C5 A E C5 C G D B ", 120)
     game.showLongText("Tanjiro is out on a quest to fight demons and to turn his sister from a demon back into a human", DialogLayout.Bottom)
@@ -462,7 +467,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     deathEnding1()
     music.powerDown.play()
 })
-let projectile: Sprite = null
+let breathOFFLAMEGOD: Sprite = null
 let tanjiro: Sprite = null
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
