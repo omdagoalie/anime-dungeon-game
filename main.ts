@@ -158,6 +158,10 @@ function enemYs () {
     enemy7.setPosition(randint(10, 150), randint(10, 150))
     myEnemy.setPosition(randint(10, 150), randint(10, 150))
 }
+function THANKyOUfINAL_LEVEL3 () {
+    game.showLongText("Good job you made it to the final level your amazing Give us an A Mr. Hutter", DialogLayout.Bottom)
+    tiles.setTilemap(tilemap`level34`)
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     animeNaruto()
     if (controller.down.isPressed()) {
@@ -249,7 +253,7 @@ function level23 () {
     music.playMelody("E D G F B A C5 B ", 120)
     madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Enemy)
     madHealth = statusbars.create(20, 4, StatusBarKind.Health)
-    madaraBoss.follow(naruTo)
+    madaraBoss.follow(naruTo, 40)
     madHealth.value = 1
     madHealth.attachToSprite(madaraBoss, 0, 0)
 }
@@ -398,6 +402,7 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
 })
 statusbars.onZero(StatusBarKind.MadaraHealt, function (status) {
     madaraBoss.destroy(effects.clouds, 500)
+    THANKyOUfINAL_LEVEL3()
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
