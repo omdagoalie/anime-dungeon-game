@@ -10,6 +10,9 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+    level21()
+})
 function enemYs () {
     enemy1 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -197,6 +200,10 @@ sprites.onOverlap(SpriteKind.boss, SpriteKind.Player, function (sprite, otherSpr
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
+function level21 () {
+    tiles.setTilemap(tilemap`level31`)
+    music.playMelody("G B A G C5 B A B ", 120)
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(extraPoints)) {
         extraPoints.destroy()
@@ -232,6 +239,27 @@ function startFight () {
     painBoss.follow(naruTo, 40)
     statusbar.value = 1
     statusbar.attachToSprite(painBoss, 0, 0)
+}
+function level23 () {
+    tiles.setTilemap(tilemap`level33`)
+    madaraBoss = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
 }
 function deathEnding1 () {
     scene.setBackgroundImage(img`
@@ -384,8 +412,14 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
+    level22()
+})
 function narutoLvl2 () {
     tiles.setTilemap(tilemap`level30`)
+    game.showLongText("Good Job now its time for the second fight", DialogLayout.Bottom)
+    game.showLongText("Go into the purple portal for the second level", DialogLayout.Bottom)
+    music.playMelody("C5 E G C5 D B C E ", 120)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
@@ -405,6 +439,9 @@ function startLevel () {
     music.spooky.loop()
     enemYs()
 }
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairLarge, function (sprite, location) {
+    level22()
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
     if (Rasen_Shuriken.overlapsWith(myEnemy)) {
@@ -447,6 +484,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     deathEnding1()
     music.powerDown.play()
 })
+function level22 () {
+    tiles.setTilemap(tilemap`level32`)
+    enemYs()
+}
+let madaraBoss: Sprite = null
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
 let painBoss: Sprite = null
