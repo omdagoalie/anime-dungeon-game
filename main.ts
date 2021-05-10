@@ -248,10 +248,10 @@ function level23 () {
     tiles.setTilemap(tilemap`level33`)
     music.playMelody("E D G F B A C5 B ", 120)
     madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Enemy)
+    madHealth = statusbars.create(20, 4, StatusBarKind.Health)
     madaraBoss.follow(naruTo)
-    madaraBar = statusbars.create(15, 4, StatusBarKind.MadaraHealt)
-    madaraBar.value = 1
-    madaraBar.attachToSprite(madaraBoss, 0, 0)
+    madHealth.value = 1
+    madHealth.attachToSprite(madaraBoss, 0, 0)
 }
 function deathEnding1 () {
     scene.setBackgroundImage(img`
@@ -408,7 +408,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
-    level22()
+    level23()
 })
 function narutoLvl2 () {
     tiles.setTilemap(tilemap`level30`)
@@ -423,7 +423,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
     }
     Rasen_Shuriken.destroy()
     if (Rasen_Shuriken.overlapsWith(madaraBoss)) {
-        madaraBar.value += -1
+        madHealth.value += -1
         info.changeScoreBy(10)
     }
 })
@@ -487,7 +487,7 @@ function level22 () {
     tiles.setTilemap(tilemap`level32`)
     enemYs()
 }
-let madaraBar: StatusBarSprite = null
+let madHealth: StatusBarSprite = null
 let madaraBoss: Sprite = null
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
