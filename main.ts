@@ -257,7 +257,7 @@ function level23 () {
     tiles.setTilemap(tilemap`level33`)
     music.playMelody("E D G F B A C5 B ", 120)
     madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Food)
-    madHealth = statusbars.create(20, 4, StatusBarKind.Health)
+    madHealth = statusbars.create(20, 4, StatusBarKind.MadaraHealt)
     madaraBoss.follow(naruTo, 40)
     madHealth.value = 1
     madHealth.attachToSprite(madaraBoss, 0, 0)
