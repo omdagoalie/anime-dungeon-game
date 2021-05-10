@@ -365,9 +365,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-function movinTanji () {
-	
-}
 function animeNaruto () {
     animation.runImageAnimation(
     naruTo,
@@ -388,7 +385,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function narutoLvl2 () {
-	
+    tiles.setTilemap(tilemap`level30`)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
