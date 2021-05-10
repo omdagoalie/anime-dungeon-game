@@ -2,10 +2,6 @@ namespace SpriteKind {
     export const boss = SpriteKind.create()
     export const dummy = SpriteKind.create()
 }
-function demonMaze () {
-    tiles.setTilemap(tilemap`level19`)
-    music.playMelody("C5 A E C5 C G D B ", 120)
-}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
@@ -13,10 +9,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     true
     )
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
-    game.showLongText("Welcome to the invisible maze, you cant see where your going, Is this the power that demons posses?", DialogLayout.Bottom)
-    demonMaze()
 })
 function enemYs () {
     enemy1 = sprites.create(img`
@@ -182,45 +174,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-function animeatackingTanji () {
-    if (controller.A.isPressed()) {
-        animation.runImageAnimation(
-        tanjiro,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `],
-        500,
-        false
-        )
-        if (controller.down.isPressed()) {
-            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack`, tanjiro, 0, 100)
-        }
-        if (controller.up.isPressed()) {
-            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack0`, tanjiro, 0, -100)
-        }
-        if (controller.left.isPressed()) {
-            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack2`, tanjiro, -100, 0)
-        }
-        if (controller.right.isPressed()) {
-            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack1`, tanjiro, 100, 0)
-        }
-    }
-}
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
@@ -252,7 +205,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, oth
 })
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     painBoss.destroy(effects.clouds, 500)
-    nowDemons()
+    narutoLvl2()
 })
 function startFight () {
     tiles.setTilemap(tilemap`level16`)
@@ -434,6 +387,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+function narutoLvl2 () {
+	
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
     if (Rasen_Shuriken.overlapsWith(painBoss)) {
         statusbar.value += -1
@@ -451,20 +407,6 @@ function startLevel () {
     tiles.setTilemap(tilemap`level15`)
     music.spooky.loop()
     enemYs()
-}
-function nowDemons () {
-    tanjiro = sprites.create(assets.image`Tanjiro`, SpriteKind.Player)
-    breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack1`, tanjiro, 50, 50)
-    animeatackingTanji()
-    scene.cameraFollowSprite(tanjiro)
-    controller.moveSprite(tanjiro)
-    Rasen_Shuriken.destroy()
-    naruTo.destroy()
-    tiles.setTilemap(tilemap`level18`)
-    music.playMelody("C5 A E C5 C G D B ", 120)
-    game.showLongText("Tanjiro is out on a quest to fight demons and to turn his sister from a demon back into a human", DialogLayout.Bottom)
-    game.showLongText("Take a break you deserve it, when you are ready go to the portal on the bottom right side of the screen", DialogLayout.Center)
-    game.showLongText("Good job You just beat pain and he didn't extract the nine tails inside Naruto, But now you have been transferred into the second universe, the demon slayer universe", DialogLayout.Center)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.baDing.play()
@@ -511,8 +453,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
 let painBoss: Sprite = null
-let breathOFFLAMEGOD: Sprite = null
-let tanjiro: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
 let enemy6: Sprite = null
