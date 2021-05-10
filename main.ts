@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const boss = SpriteKind.create()
     export const dummy = SpriteKind.create()
+    export const bossss = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const MadaraHealt = StatusBarKind.create()
@@ -203,6 +204,10 @@ sprites.onOverlap(SpriteKind.boss, SpriteKind.Player, function (sprite, otherSpr
         info.changeLifeBy(-1)
         deathEnding1()
     }
+    if (madaraBoss.overlapsWith(naruTo)) {
+        info.changeLifeBy(-1)
+        deathEnding1()
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
@@ -227,9 +232,9 @@ function startFight () {
     statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
     music.playMelody("A F E F D G E F ", 120)
     extraPoints = sprites.create(img`
-        . . . . . 7 7 7 7 7 7 . . . . . 
+        . . . . . 5 5 5 5 5 5 . . . . . 
         . . . . . 1 1 1 1 1 1 . . . . . 
-        . . . . . 1 7 1 1 7 1 . . . . . 
+        . . . . . 1 f 1 1 f 1 . . . . . 
         . . . . . 1 1 f f 1 1 . . . . . 
         . . . . . a a 2 2 a a . . . . . 
         . . . a a a 2 2 2 2 a a a . . . 
@@ -251,7 +256,7 @@ function startFight () {
 function level23 () {
     tiles.setTilemap(tilemap`level33`)
     music.playMelody("E D G F B A C5 B ", 120)
-    madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Enemy)
+    madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Food)
     madHealth = statusbars.create(20, 4, StatusBarKind.Health)
     madaraBoss.follow(naruTo, 40)
     madHealth.value = 1
@@ -426,11 +431,11 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
         statusbar.value += -1
         info.changeScoreBy(3)
     }
-    Rasen_Shuriken.destroy()
     if (Rasen_Shuriken.overlapsWith(madaraBoss)) {
         madHealth.value += -1
-        info.changeScoreBy(10)
+        info.changeScoreBy(20)
     }
+    Rasen_Shuriken.destroy()
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
@@ -493,9 +498,9 @@ function level22 () {
     enemYs()
 }
 let madHealth: StatusBarSprite = null
-let madaraBoss: Sprite = null
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
+let madaraBoss: Sprite = null
 let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
 let enemy7: Sprite = null
