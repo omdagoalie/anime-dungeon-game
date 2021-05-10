@@ -211,7 +211,43 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.dummy, function (sprite, oth
     }
 })
 function animeTanji () {
-	
+    if (true) {
+        animation.runImageAnimation(
+        tanjiro,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `],
+        500,
+        false
+        )
+        if (controller.down.isPressed()) {
+            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack`, tanjiro, 0, 100)
+        }
+        if (controller.up.isPressed()) {
+            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack0`, tanjiro, 0, -100)
+        }
+        if (controller.left.isPressed()) {
+            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack2`, tanjiro, -100, 0)
+        }
+        if (controller.right.isPressed()) {
+            breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack1`, tanjiro, 100, 0)
+        }
+    }
 }
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     painBoss.destroy(effects.clouds, 500)
@@ -467,9 +503,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     deathEnding1()
     music.powerDown.play()
 })
+let statusbar: StatusBarSprite = null
 let breathOFFLAMEGOD: Sprite = null
 let tanjiro: Sprite = null
-let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
 let painBoss: Sprite = null
 let Rasen_Shuriken: Sprite = null
