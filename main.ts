@@ -2,6 +2,9 @@ namespace SpriteKind {
     export const boss = SpriteKind.create()
     export const dummy = SpriteKind.create()
 }
+namespace StatusBarKind {
+    export const MadaraHealt = StatusBarKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
@@ -218,6 +221,7 @@ function startFight () {
     tiles.setTilemap(tilemap`level16`)
     painBoss = sprites.create(assets.image`Pain`, SpriteKind.boss)
     statusbar = statusbars.create(15, 4, StatusBarKind.EnemyHealth)
+    music.playMelody("A F E F D G E F ", 120)
     extraPoints = sprites.create(img`
         . . . . . 7 7 7 7 7 7 . . . . . 
         . . . . . 1 1 1 1 1 1 . . . . . 
@@ -242,24 +246,12 @@ function startFight () {
 }
 function level23 () {
     tiles.setTilemap(tilemap`level33`)
-    madaraBoss = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
+    music.playMelody("E D G F B A C5 B ", 120)
+    madaraBoss = sprites.create(assets.image`madara`, SpriteKind.Enemy)
+    madaraBoss.follow(naruTo)
+    madaraBar = statusbars.create(15, 4, StatusBarKind.MadaraHealt)
+    madaraBar.value = 1
+    madaraBar.attachToSprite(madaraBoss, 0, 0)
 }
 function deathEnding1 () {
     scene.setBackgroundImage(img`
@@ -404,6 +396,9 @@ function animeNaruto () {
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, naruTo)
 })
+statusbars.onZero(StatusBarKind.MadaraHealt, function (status) {
+    madaraBoss.destroy(effects.clouds, 500)
+})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     naruTo,
@@ -427,6 +422,10 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
         info.changeScoreBy(3)
     }
     Rasen_Shuriken.destroy()
+    if (Rasen_Shuriken.overlapsWith(madaraBoss)) {
+        madaraBar.value += -1
+        info.changeScoreBy(10)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.buttonOrange, function (sprite, location) {
     effects.confetti.startScreenEffect(500)
@@ -488,6 +487,7 @@ function level22 () {
     tiles.setTilemap(tilemap`level32`)
     enemYs()
 }
+let madaraBar: StatusBarSprite = null
 let madaraBoss: Sprite = null
 let statusbar: StatusBarSprite = null
 let extraPoints: Sprite = null
