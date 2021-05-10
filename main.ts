@@ -174,6 +174,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.right.isPressed()) {
         Rasen_Shuriken = sprites.createProjectileFromSprite(assets.image`Rasen Shuriken`, naruTo, 100, 0)
     }
+    naruTo.say("RasenShuriken", 100)
     animation.runImageAnimation(
     Rasen_Shuriken,
     assets.animation`rasen move`,
@@ -453,7 +454,8 @@ function startLevel () {
 }
 function nowDemons () {
     tanjiro = sprites.create(assets.image`Tanjiro`, SpriteKind.Player)
-    breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack`, tanjiro, 50, 50)
+    breathOFFLAMEGOD = sprites.createProjectileFromSprite(assets.image`Tanji Attack1`, tanjiro, 50, 50)
+    animeatackingTanji()
     scene.cameraFollowSprite(tanjiro)
     controller.moveSprite(tanjiro)
     Rasen_Shuriken.destroy()
